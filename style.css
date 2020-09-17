@@ -1,0 +1,148 @@
+:root{
+    --box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
+    --accent-color: #1a73e8;
+    --width: 50vmin;
+    --height: calc(var(--width)*1.818);
+    --p-margin: 1vmin;
+    --paragraph-font-size: calc(var(--height)/20);
+    --input-size: calc(var(--height)/30);
+    --paragraph-title-size: calc(var(--height)/15);
+}
+
+
+
+@media screen and (orientation: portrait){
+    :root{
+        --width: 80vmin;
+        --margin-top: 10vmin;
+    }
+}
+
+@media screen and (orientation: landscape){
+    :root{
+        --width: 50vmin;
+        --margin-top: 4vmin;
+    }
+}
+
+@viewport {
+    width: device-width;
+    zoom: 1.0;
+}
+
+
+@font-face {
+    font-family: 'ProductSans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('ProductSans'), url('./productsans/Product-Sans-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'ProductSansBold';
+    font-style: normal;
+    font-weight: bold;
+    src: local('ProductSansBold'), url('./productsans/Product-Sans-Bold.woff') format('woff');
+}
+
+*{ 
+    box-sizing: border-box; 
+    transition-timing-function: ease-out;
+    transition: color 0.3s;
+}
+
+p{ margin: var(--p-margin) 1vmin var(--p-margin) 0.5vmin; }
+
+body {
+    overflow: hidden;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background: #fefef0;
+}
+
+input {
+    width: 100%;
+    background: white;
+    color: black;
+    border: 1vmin solid white;
+    border-radius: 1vmin;
+    font-size: var(--input-size);
+    font-family: 'ProductSans', sans-serif;
+}
+
+.submit-form {
+    background: white;
+    width: var(--width);
+    position: relative;
+	display: flex;
+	flex-direction: column; 
+	justify-content: center;
+	align-items: left;
+    margin: auto;
+    margin-top: var(--margin-top);
+    border-radius: 2vmin;
+    box-shadow: var(--box-shadow);
+}
+
+.form-body{
+    display: flex;
+	flex-direction: column; 
+	justify-content: left;
+	align-items: left;
+    background: var(--accent-color);
+    padding-bottom: 2vmin;
+    
+}
+
+.input-div{
+    display: flex;
+	flex-direction: column; 
+	justify-content: left;
+	align-items: left;
+}
+
+.form-field{
+    display: flex;
+	flex-direction: column; 
+	justify-content: left;
+	align-items: left;
+    padding: 0 2vmin 0.5vmin 2vmin;
+}
+
+.input-p{
+    font-family: 'ProductSans', sans-serif;
+    font-size: var(--paragraph-font-size);
+    color: white;
+    user-select: none;
+}
+
+.form-title{
+    font-family: 'ProductSansBold', sans-serif;
+    font-size: var(--paragraph-title-size);
+    color: black;
+    user-select: none;
+}
+
+.form-title:hover{ color: grey; }
+
+.submit-div{
+    margin-bottom: 1vmin;
+    background: white;
+    display: flex;
+	flex-direction: column; 
+	align-items: left;
+	justify-content: center;
+    padding:  0 1vmin 0vmin 2vmin;
+}
+
+.title-div{
+    margin-top: 2vmin;
+    background: white;
+    display: flex;
+	flex-direction: column; 
+	align-items: left;
+	justify-content: center;
+    padding:  0 1vmin 0vmin 2vmin;
+}
+
