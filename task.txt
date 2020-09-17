@@ -1,0 +1,26 @@
+**Contact Form communicating with Google calendar*.*
+*- Form should represent meeting scheduler -*
+
+*1. Front-end - Input fields (all required except note):
+     Name
+     Phone
+     Email
+     Time (time picker)
+     Date (date picker)
+
+     Note
+     *Form should have some spam/robot protection.
+     *Email and Phone fields should have standard validation
+     *Form should have success/fail messages
+
+2. Back-end - After SUBMIT, the form will connect to the google calendar 
+account via Google calendar API, and create the calendar event  and the 
+reminder with provided information by the form user/client (client 
+should receive remainders 15 and 30 mins before the meeting).
+
+     Note
+    * Task should be hosted on Github and shared a link over email ****job@lltms.co.rs**.
+    * Event should have all entered data.
+    * Notification that event is created should be delivered to entered email.
+    * Create some fake google account to store calendar events.
+    * Task should include ReadMe.md file within the documentation.
