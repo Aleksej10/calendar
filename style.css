@@ -65,10 +65,16 @@ input {
     width: 100%;
     background: white;
     color: black;
-    border: 1vmin solid white;
+    border: none;
+    padding: 1vmin;
     border-radius: 1vmin;
     font-size: var(--input-size);
     font-family: 'ProductSans', sans-serif;
+}
+
+input:invalid{
+    color: var(--accent-color);
+    border: none;
 }
 
 .submit-form {

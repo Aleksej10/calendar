@@ -12,8 +12,8 @@
     transform-origin: 100% 0%;
     border-radius: 4px;
     background: #fff;
-    color: #4d4d4d;
-    font-family: "Open Sans";
+    color: #3d3d3d;
+    font-family: "ProductSans";
     font-size: 14px;
     -webkit-box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.3);
@@ -471,27 +471,27 @@
     opacity: 1; } }
 
 .wdp .wdp-container .wdp-header {
-  background: #0f9aef; }
+  background: var(--accent-color); }
   .wdp .wdp-container .wdp-header span {
     color: #fff; }
   .wdp .wdp-container .wdp-header svg {
-    fill: #0c7bbf; }
+    fill: white; }
     .wdp .wdp-container .wdp-header svg:hover {
       fill: #0a6ca7; }
 
 .wdp .wdp-container .wdp-date-container ul li.wdp-active {
   color: #fff !important; }
   .wdp .wdp-container .wdp-date-container ul li.wdp-active:before {
-    background: #0f9aef; }
+    background: var(--accent-color); }
 
 .wdp .wdp-container .wdp-hour-container .wdp-hour-el-container input {
-  background: #0f9aef;
+  background: var(--accent-color);
   color: #fff; }
   .wdp .wdp-container .wdp-hour-container .wdp-hour-el-container input:focus {
     background: #0d8bd7; }
 
 .wdp .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-blue .wdp-container .wdp-header {
   background: #007bff; }
@@ -514,7 +514,7 @@
     background: #006fe6; }
 
 .wdp.wdp-blue .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-cyan .wdp-container .wdp-header {
   background: #23c3d7; }
@@ -537,7 +537,7 @@
     background: #1fafc1; }
 
 .wdp.wdp-cyan .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-dark .wdp-container .wdp-header {
   background: #1c2b36; }
@@ -560,7 +560,7 @@
     background: #131e25; }
 
 .wdp.wdp-dark .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-gray .wdp-container .wdp-header {
   background: #8c8f92; }
@@ -583,7 +583,7 @@
     background: #7f8286; }
 
 .wdp.wdp-gray .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-green .wdp-container .wdp-header {
   background: #36a53b; }
@@ -606,7 +606,7 @@
     background: #309234; }
 
 .wdp.wdp-green .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-light .wdp-container .wdp-header {
   background: #eee; }
@@ -652,7 +652,7 @@
     background: #a22cf9; }
 
 .wdp.wdp-purple .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-red .wdp-container .wdp-header {
   background: #f23e30; }
@@ -675,7 +675,7 @@
     background: #f02818; }
 
 .wdp.wdp-red .wdp-container .wdp-buttons a {
-  color: #0f9aef; }
+  color: var(--accent-color); }
 
 .wdp.wdp-yellow .wdp-container .wdp-header {
   background: #ebb512; }
