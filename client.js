@@ -37,6 +37,7 @@ function submit(event){
     grecaptcha.render('captcha', {
       'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17'
     });
+    console.log(grecaptcha.getResponse());
 }
 
 // 6LfmxM0ZAAAAAHVBrE_ZkyYDcxs0Xqw0oYvH4N0D
