@@ -7,7 +7,7 @@ document.onkeydown = function (e) {
 }
 
 var validateCaptcha = function(response){
-    let response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    let res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
@@ -18,7 +18,7 @@ var validateCaptcha = function(response){
       }),
     });
 
-    let result = await response.json();
+    let result = await res.json();
     console.log(result);
 }
 
