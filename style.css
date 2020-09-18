@@ -1,5 +1,5 @@
 :root{
-    --box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
+    --box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .1);
     --accent-color: #1a73e8;
     --width: 50vmin;
     --height: calc(var(--width)*1.818);
@@ -58,7 +58,6 @@ body {
     display: block;
     justify-content: center;
     align-items: center;
-    background: #fefef0;
 }
 
 input {
