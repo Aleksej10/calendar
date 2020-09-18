@@ -10,6 +10,7 @@ function send_mail(){
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const datetime = document.getElementById('datetime').value;
+    console.log(email);
 	Email.send({
         SecureToken: '18cb038a-f9ad-48fa-ae9b-dcba6b18dfbf',
         To : email,
