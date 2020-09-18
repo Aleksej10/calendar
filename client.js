@@ -6,7 +6,7 @@ document.onkeydown = function (e) {
     }
 }
 
-var validateCaptcha = function(response){
+var validateCaptcha = async function(response){
     let res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       headers: {
