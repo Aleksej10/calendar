@@ -69,7 +69,7 @@ function submit(event){
     const email = fields[2].value;
     const datetime = fields[3].value;
 
-    document.getElementById('submit-button').style.visibilitly = 'hidden';
+    document.getElementById('submit-button').style.visibility = 'hidden';
     grecaptcha.render('captcha', {
         'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17',
         'data-size' : 'compact',
