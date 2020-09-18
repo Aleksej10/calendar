@@ -22,7 +22,6 @@ function send_mail(){
     .then(function (message) { 
         if(message == 'OK'){
             document.getElementById('submit-button').innerText = 'submitted!';
-            document.getElementById('submit-button').style.visiblitly = 'visible';
             alert('mail sent successfully, it is probably in your spam folder by now!');
         }
         else{
@@ -37,6 +36,7 @@ function send_event(){
 
 function after_submit(){
     document.getElementById('captcha').style.visibility = 'hidden';
+    document.getElementById('captcha').style.height = '0';
     send_event();
     send_mail();
 }
@@ -69,7 +69,7 @@ function submit(event){
     const email = fields[2].value;
     const datetime = fields[3].value;
 
-    document.getElementById('submit-button').style.visibility = 'hidden';
+    document.getElementById('submit-button').innerText = '';
     grecaptcha.render('captcha', {
         'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17',
         'data-size' : 'compact',
