@@ -7,16 +7,19 @@ document.onkeydown = function (e) {
 }
 
 var validateCaptcha = function(response){
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-        'secret': '6LfmxM0ZAAAAAHVBrE_ZkyYDcxs0Xqw0oYvH4N0D',
-        'response': response,
-    }));
-    xhr.onload = function(event){ 
-        console.log(event.target.response); 
-    }; 
+    let response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+          'secret' : '6LfmxM0ZAAAAAHVBrE_ZkyYDcxs0Xqw0oYvH4N0D',
+          'response' : response,
+      }),
+    });
+
+    let result = await response.json();
+    console.log(result);
 }
 
 function submit(event){
