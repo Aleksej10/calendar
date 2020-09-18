@@ -11,11 +11,9 @@ function send_mail(){
     const email = document.getElementById('email').value;
     const datetime = document.getElementById('datetime').value;
 	Email.send({
-        Host: 'smtp.mailtrap.io',
-        Username : 'DTS Info',
-        Password : 'KmsA2tGbjfzgs56',
-        From: 'dtsinfo.service@gmail.com',
+        SecureToken: '18cb038a-f9ad-48fa-ae9b-dcba6b18dfbf',
         To : email,
+        From: 'dtsinfo.service@gmail.com',
         Subject : 'Event successfully created!',
         Body : 'Hey '+name+', you have successfully created an event on '+datetime+'.',
     })
