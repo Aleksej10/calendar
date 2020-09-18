@@ -12,7 +12,10 @@ function send_mail(){
     const datetime = document.getElementById('datetime').value;
     console.log(email);
 	Email.send({
-        SecureToken: 'A694C511-2BF4-4D1F-941D-E4BCD288D4BF',
+        Host: 'smtp.elasticemail.com',
+        Username: 'dtsinfo.service@gmail.com', 
+        Password: 'F87C76BD5CBEF0DCEAB88E0E4062E66487D0',
+        // SecureToken: 'A694C511-2BF4-4D1F-941D-E4BCD288D4BF',
         To : email,
         From: 'dtsinfo.service@gmail.com',
         Subject : 'Event successfully created!',
