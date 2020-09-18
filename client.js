@@ -38,6 +38,6 @@ function submit(event){
     grecaptcha.render('captcha', {
       'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17'
     });
-    console.log(grecaptcha.getResponse());
+    console.log(grecaptcha.getResponse('captcha'));
 }
 
