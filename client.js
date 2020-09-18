@@ -6,9 +6,33 @@ document.onkeydown = function (e) {
     }
 }
 
+function send_mail(){
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const datetime = document.getElementById('datetime').value;
+	Email.send({
+        Host: 'smtp.mailtrap.io',
+        Username : 'DTS Info',
+        Password : 'KmsA2tGbjfzgs56',
+        From: 'dtsinfo.service@gmail.com',
+        To : email,
+        Subject : 'Event successfully created!',
+        Body : 'Hey '+name+', you have successfully created an event on '+datetime+'.',
+    })
+    .then(function (message) { 
+        console.log(message);
+        alert("mail sent successfully");
+    }); 
+}
+
+function after_submit(){
+    send_mail();
+}
+
 var validateCaptcha = function(response){
     if(response != null){
         console.log('submitted!');
+        after_submit();
     }
     else{
         console.log('you are a robot');
