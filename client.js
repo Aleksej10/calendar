@@ -6,20 +6,13 @@ document.onkeydown = function (e) {
     }
 }
 
-var validateCaptcha = async function(response){
-    let res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      },
-      body: JSON.stringify({
-          'secret' : '6LfmxM0ZAAAAAHVBrE_ZkyYDcxs0Xqw0oYvH4N0D',
-          'response' : response,
-      }),
-    });
-
-    let result = await res.json();
-    console.log(result);
+var validateCaptcha = function(response){
+    if(response != null){
+        console.log('submitted!');
+    }
+    else{
+        console.log('you are a robot');
+    }
 }
 
 function submit(event){
