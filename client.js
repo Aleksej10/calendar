@@ -6,8 +6,17 @@ document.onkeydown = function (e) {
     }
 }
 
-var submitform = function(response){
-    console.log(response);
+var validateCaptcha = function(response){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        'secret': '6LfmxM0ZAAAAAHVBrE_ZkyYDcxs0Xqw0oYvH4N0D',
+        'response': response,
+    }));
+    xhr.onload = function(event){ 
+        console.log(event.target.response); 
+    }; 
 }
 
 function submit(event){
@@ -36,6 +45,6 @@ function submit(event){
     grecaptcha.render('captcha', {
         'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17',
         'data-size' : 'compact',
-        'callback' : submitform,
+        'callback' : validateCaptcha,
     });
 }
