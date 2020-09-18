@@ -26,6 +26,7 @@ function send_mail(){
 }
 
 function after_submit(){
+    document.getElementById('captcha').style.visibility = 'hidden';
     send_mail();
 }
 
