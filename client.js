@@ -15,15 +15,20 @@ function send_mail(){
         Host: 'smtp.elasticemail.com',
         Username: 'dtsinfo.service@gmail.com', 
         Password: 'F87C76BD5CBEF0DCEAB88E0E4062E66487D0',
-        // SecureToken: 'A694C511-2BF4-4D1F-941D-E4BCD288D4BF',
         To : email,
         From: 'dtsinfo.service@gmail.com',
         Subject : 'Event successfully created!',
         Body : 'Hey '+name+', you have successfully created an event on '+datetime+'.',
     })
     .then(function (message) { 
-        console.log(message);
-        alert("mail sent successfully");
+        if(message == 'OK'){
+            document.getElementById('submit-button').innerText = 'submitted';
+            document.getElementById('submit-button').style.visiblitly = 'visible';
+            alert('mail sent successfully, it is probably in your spam folder by now!');
+        }
+        else{
+            alert('i do not deserve this job');
+        }
     }); 
 }
 
@@ -64,7 +69,7 @@ function submit(event){
     console.log(phone);
     console.log(email);
     console.log(datetime);
-    document.getElementById('submit-button').innerText = '';
+    document.getElementById('submit-button').style.visiblitly = 'hidden';
     grecaptcha.render('captcha', {
         'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17',
         'data-size' : 'compact',
