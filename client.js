@@ -12,7 +12,7 @@ function send_mail(){
     const datetime = document.getElementById('datetime').value;
     console.log(email);
 	Email.send({
-        SecureToken: '18cb038a-f9ad-48fa-ae9b-dcba6b18dfbf',
+        SecureToken: '71BD6462-97E2-4717-AE6E-15C76111F42C',
         To : email,
         From: 'dtsinfo.service@gmail.com',
         Subject : 'Event successfully created!',
