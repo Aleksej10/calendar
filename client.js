@@ -10,7 +10,6 @@ function send_mail(){
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const datetime = document.getElementById('datetime').value;
-    console.log(email);
 	Email.send({
         Host: 'smtp.elasticemail.com',
         Username: 'dtsinfo.service@gmail.com', 
@@ -22,7 +21,7 @@ function send_mail(){
     })
     .then(function (message) { 
         if(message == 'OK'){
-            document.getElementById('submit-button').innerText = 'submitted';
+            document.getElementById('submit-button').innerText = 'submitted!';
             document.getElementById('submit-button').style.visiblitly = 'visible';
             alert('mail sent successfully, it is probably in your spam folder by now!');
         }
@@ -32,18 +31,23 @@ function send_mail(){
     }); 
 }
 
+function send_event(){
+
+}
+
 function after_submit(){
     document.getElementById('captcha').style.visibility = 'hidden';
+    send_event();
     send_mail();
 }
 
 var validateCaptcha = function(response){
     if(response != null){
-        console.log('submitted!');
+        console.log('you\re just a human after all');
         after_submit();
     }
     else{
-        console.log('you are a robot');
+        console.log('you\'re a robot, admit it!');
     }
 }
 
@@ -64,12 +68,8 @@ function submit(event){
     const phone = fields[1].value;
     const email = fields[2].value;
     const datetime = fields[3].value;
-    console.log("form is valid");
-    console.log(name);
-    console.log(phone);
-    console.log(email);
-    console.log(datetime);
-    document.getElementById('submit-button').style.visiblitly = 'hidden';
+
+    document.getElementById('submit-button').style.visibilitly = 'hidden';
     grecaptcha.render('captcha', {
         'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17',
         'data-size' : 'compact',
