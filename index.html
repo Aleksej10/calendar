@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title> Contact Form </title>
+    <script type="text/javascript" src="./dist/js/window-date-picker.js"></script>
+    <link rel="stylesheet" href="./dist/css/window-date-picker.css">
+    <script type="text/javascript" src="./client.js"></script>
     <link rel="stylesheet" href="./style.css"></link>
-    <script type="text/javascript" src="client.js"></script>
 </head>
 <body>
     <div class="submit-form">
@@ -14,44 +16,28 @@
         </div>
         <div class="form-body">
             <div class="form-field">
-                <div class="input-div">
-                    <p class="input-p"> name </p>
-                </div>
-                <div class="">
-                    <input type="text" id="name">
-                </div>
+                <p class="input-p"> name </p>
+                <input type="text" id="name">
             </div>
             <div class="form-field">
-                <div class="input-div">
-                    <p class="input-p"> phone </p>
-                </div>
-                <div class="">
-                    <input type="text" id="phone">
-                </div>
+                <p class="input-p"> phone </p>
+                <input type="text" id="phone">
             </div>
             <div class="form-field">
-                <div class="input-div">
-                    <p class="input-p"> email </p>
-                </div>
-                <div class="">
-                    <input type="text" id="email">
-                </div>
+                <p class="input-p"> email </p>
+                <input type="text" id="email">
             </div>
             <div class="form-field">
-                <div class="input-div">
-                    <p class="input-p"> time </p>
-                </div>
-                <div class="">
-                    <input type="text" id="time">
-                </div>
-            </div>
-            <div class="form-field">
-                <div class="input-div">
-                    <p class="input-p"> date </p>
-                </div>
-                <div class="">
-                    <input type="text" id="date">
-                </div>
+                <div id="picker"></div>
+                <p class="input-p" id="toggle"> date &amp time </p>
+                <input type="text" id="demo">
+                <script>
+                    const picker = new WindowDatePicker({
+                        el: '#picker',
+                        toggleEl: '#toggle',
+                        inputEl: '#demo'
+                    });
+                </script>
             </div>
         </div>
         <div class="submit-div">

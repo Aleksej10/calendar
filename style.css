@@ -14,14 +14,14 @@
 @media screen and (orientation: portrait){
     :root{
         --width: 80vmin;
-        --margin-top: 10vmin;
+        --margin-top: 18vmin;
     }
 }
 
 @media screen and (orientation: landscape){
     :root{
         --width: 50vmin;
-        --margin-top: 4vmin;
+        --margin-top: 8vmin;
     }
 }
 
@@ -93,13 +93,6 @@ input {
     background: var(--accent-color);
     padding-bottom: 2vmin;
     
-}
-
-.input-div{
-    display: flex;
-	flex-direction: column; 
-	justify-content: left;
-	align-items: left;
 }
 
 .form-field{
