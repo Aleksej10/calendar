@@ -111,13 +111,20 @@ function send_mail(){
     }); 
 }
 
-function send_event(){
+function create_event(){
+}
+
+function get_datetime(){
+    const t = document.getElementById('datetime').value.split(' ');
+    const dt = t[0].split('/');
+    const d = new Date(dt[2], dt[1], dt[0], t[1][0], t[1][1], 0, 0);
+    return d.toISOString();
 }
 
 function after_submit(){
     document.getElementById('captcha').style.visibility = 'hidden';
     document.getElementById('captcha').style.height = '0';
-    send_event();
+    create_event();
     send_mail();
 }
 
@@ -150,10 +157,10 @@ function submit(event){
             return;
         }
     }
-    const name = fields[0].value;
-    const phone = fields[1].value;
-    const email = fields[2].value;
-    const datetime = fields[3].value;
+    // const name = fields[0].value;
+    // const phone = fields[1].value;
+    // const email = fields[2].value;
+    // const datetime = fields[3].value;
 
     document.getElementById('submit-button').innerText = '';
     grecaptcha.render('captcha', {
@@ -163,6 +170,15 @@ function submit(event){
     });
 }
 
-// window.onload = function(){
-//     gapi.load('client:auth2', initClient);
-// }
+function ISODateString(d){
+    function pad(n){
+        return n<10 ? '0'+n : n;
+    }
+    return d.getUTCFullYear()+'-'
+        + pad(d.getUTCMonth()+1)+'-'
+        + pad(d.getUTCDate())+'T'
+        + pad(d.getUTCHours())+':'
+        + pad(d.getUTCMinutes())+':'
+        + pad(d.getUTCSeconds());
+        // + pad(d.getUTCSeconds())+'Z'
+}
