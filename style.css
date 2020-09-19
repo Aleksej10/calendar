@@ -167,6 +167,6 @@ input:invalid{
 
 #content{
     font-family: 'ProductSans', sans-serif;
-    font-size: var(--paragraph-font-size);
+    font-size: var(--input-size);
     color: black;
 }

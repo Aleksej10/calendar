@@ -22,41 +22,12 @@ function initClient() {
         discoveryDocs: DISCOVERY_DOCS,
         scope: SCOPES
     }).then(function () {
-        // Listen for sign-in state changes.
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-        // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     }, function(error) {
           appendPre(JSON.stringify(error, null, 2));
     });
 }
-
-// function listUpcomingEvents() {
-// gapi.client.calendar.events.list({
-//   'calendarId': 'primary',
-//   'timeMin': (new Date()).toISOString(),
-//   'showDeleted': false,
-//   'singleEvents': true,
-//   'maxResults': 10,
-//   'orderBy': 'startTime'
-// }).then(function(response) {
-//   var events = response.result.items;
-//   appendPre('Upcoming events:');
-
-//   if (events.length > 0) {
-//     for (i = 0; i < events.length; i++) {
-//       var event = events[i];
-//       var when = event.start.dateTime;
-//       if (!when) {
-//         when = event.start.date;
-//       }
-//       appendPre(event.summary + ' (' + when + ')')
-//     }
-//   } else {
-//     appendPre('No upcoming events found.');
-//   }
-// });
-// }
 
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
@@ -103,6 +74,7 @@ function send_mail(){
             alert('mail sent successfully, it is probably in your spam folder by now!');
         }
         else{
+            console.log(message);
             // alert('i do not deserve this job');
         }
     }); 
@@ -142,8 +114,10 @@ function create_event(){
     });
 
     request.execute(function(eventt) {
-      appendPre('Event created: ' + eventt.htmlLink);
+      appendPre('Event created, check it out at ' + eventt.htmlLink);
     });
+
+    document.getElementById('submit-form').style.display = 'none';
 }
 
 function get_offset(date){
@@ -158,7 +132,8 @@ function get_datetime(){
     const t = document.getElementById('datetime').value.split(' ');
     const dt = t[0].split('/');
     const d = new Date(dt[2], dt[1], dt[0], t[1][0], t[1][1], 0, 0);
-    return d.toISOString().split('.')[0]+get_offset(d);
+    return d.toISOString().split('.')[0]+'+00:00';
+    // return d.toISOString().split('.')[0]+get_offset(d);
 }
 
 function after_submit(){
@@ -178,7 +153,7 @@ var validateCaptcha = function(response){
     }
 }
 
-function submit(event){
+function submit(){
     if (signed == false){
         console.log('you need to sign with your google account in order to schedule an event');
         console.log('if you did not get prompted for sign in, please refresh the page');
