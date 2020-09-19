@@ -5,9 +5,9 @@ var SCOPES = "https://www.googleapis.com/auth/calendar";
 
 var signed = false;
 
-// function handleClientLoad() {
-//     gapi.load('client:auth2', initClient);
-// }
+function handleClientLoad() {
+    gapi.load('client:auth2', initClient);
+}
 
 function appendPre(message) {
     var pre = document.getElementById('content');
@@ -164,6 +164,6 @@ function submit(event){
     });
 }
 
-window.onload = function(){
-    gapi.load('client:auth2', initClient);
-}
+// window.onload = function(){
+//     gapi.load('client:auth2', initClient);
+// }
