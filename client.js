@@ -3,6 +3,8 @@ var API_KEY = "AIzaSyD-SHsqvtSLUDTfO4GiH9WypCr7i9wWSDU";
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 var SCOPES = "https://www.googleapis.com/auth/calendar";
 
+var signed = false;
+
 // function handleClientLoad() {
 //     gapi.load('client:auth2', initClient);
 // }
@@ -32,58 +34,46 @@ function initClient() {
     });
 }
 
-function listUpcomingEvents() {
-gapi.client.calendar.events.list({
-  'calendarId': 'primary',
-  'timeMin': (new Date()).toISOString(),
-  'showDeleted': false,
-  'singleEvents': true,
-  'maxResults': 10,
-  'orderBy': 'startTime'
-}).then(function(response) {
-  var events = response.result.items;
-  appendPre('Upcoming events:');
+// function listUpcomingEvents() {
+// gapi.client.calendar.events.list({
+//   'calendarId': 'primary',
+//   'timeMin': (new Date()).toISOString(),
+//   'showDeleted': false,
+//   'singleEvents': true,
+//   'maxResults': 10,
+//   'orderBy': 'startTime'
+// }).then(function(response) {
+//   var events = response.result.items;
+//   appendPre('Upcoming events:');
 
-  if (events.length > 0) {
-    for (i = 0; i < events.length; i++) {
-      var event = events[i];
-      var when = event.start.dateTime;
-      if (!when) {
-        when = event.start.date;
-      }
-      appendPre(event.summary + ' (' + when + ')')
-    }
-  } else {
-    appendPre('No upcoming events found.');
-  }
-});
-}
+//   if (events.length > 0) {
+//     for (i = 0; i < events.length; i++) {
+//       var event = events[i];
+//       var when = event.start.dateTime;
+//       if (!when) {
+//         when = event.start.date;
+//       }
+//       appendPre(event.summary + ' (' + when + ')')
+//     }
+//   } else {
+//     appendPre('No upcoming events found.');
+//   }
+// });
+// }
 
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
+        signed = true;
         console.log("successfully signed in with google account!")
-        listUpcomingEvents();
-        // authorizeButton.style.display = 'none';
-        // signoutButton.style.display = 'block';
+        document.getElementById('form-body').style.background = 'var(--accent-color)';
         // listUpcomingEvents();
     } 
     else {
+        signed = false;
         console.log("error signing in with google account!")
-        // authorizeButton.style.display = 'block';
-        // signoutButton.style.display = 'none';
+        document.getElementById('form-body').style.background = 'grey';
     }
 }
-
-// // Sign in the user upon button click.
-// function handleAuthClick(event) {
-//     gapi.auth2.getAuthInstance().signIn();
-// }
-
-// // Sign out the user upon button click.
-// function handleSignoutClick(event) {
-//     gapi.auth2.getAuthInstance().signOut();
-// }
-
 
 document.onkeydown = function (e) {
     e = e || window.event;
@@ -118,7 +108,6 @@ function send_mail(){
 }
 
 function send_event(){
-    gapi.auth2.getAuthInstance().signIn();
 }
 
 function after_submit(){
@@ -139,6 +128,11 @@ var validateCaptcha = function(response){
 }
 
 function submit(event){
+    if (signed == false){
+        console.log('you need to sign with your google account in order to schedule an event');
+        console.log('if you did not get prompted for sign in, please refresh the page');
+        return;
+    }
     const fields = [
         document.getElementById('name'),
         document.getElementById('phone'),
@@ -147,6 +141,7 @@ function submit(event){
     ];
     for(var f of fields){
         if(!f.validity.valid){
+            console.log('please fill all fields');
             f.focus();
             return;
         }
@@ -156,11 +151,17 @@ function submit(event){
     const email = fields[2].value;
     const datetime = fields[3].value;
 
-    gapi.load('client:auth2', initClient); //init client for calendar api
     document.getElementById('submit-button').innerText = '';
     grecaptcha.render('captcha', {
         'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17',
         'data-size' : 'compact',
         'callback' : validateCaptcha,
     });
+}
+
+window.onload = function(){
+    document.getElementById('form-body').style.background = 'grey';
+
+    gapi.load('client:auth2', initClient); //init client for calendar api
+    gapi.auth2.getAuthInstance().signIn();
 }
