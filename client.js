@@ -141,8 +141,8 @@ function get_datetime(){
 function after_submit(){
     document.getElementById('captcha').style.visibility = 'hidden';
     document.getElementById('captcha').style.height = '0';
-    create_event();
     send_mail();
+    create_event();
 }
 
 var validateCaptcha = function(response){
