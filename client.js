@@ -113,11 +113,12 @@ function create_event(){
         'resource': eventt,
     });
 
+    document.getElementById('submit-form').style.display = 'none';
+
     request.execute(function(eventt) {
       appendPre('Event created, check it out at ' + eventt.htmlLink);
     });
 
-    document.getElementById('submit-form').style.display = 'none';
 }
 
 function get_offset(date){
@@ -131,9 +132,10 @@ function get_offset(date){
 function get_datetime(){
     const t = document.getElementById('datetime').value.split(' ');
     const dt = t[0].split('/');
-    const d = new Date(dt[2], dt[1], dt[0], t[1][0], t[1][1], 0, 0);
-    return d.toISOString().split('.')[0]+'+00:00';
-    // return d.toISOString().split('.')[0]+get_offset(d);
+    const tm = t[1].split(':');
+    const d = new Date(dt[2], dt[1], dt[0], tm[0], tm[1], 0, 0);
+    // return d.toISOString().split('.')[0]+'+00:00';
+    return d.toISOString().split('.')[0]+get_offset(d);
 }
 
 function after_submit(){
