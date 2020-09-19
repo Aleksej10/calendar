@@ -112,7 +112,6 @@ function send_mail(){
 }
 
 function send_event(){
-    gapi.auth2.getAuthInstance().signIn();
 }
 
 function after_submit(){
