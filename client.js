@@ -1,7 +1,7 @@
-const CLIENT_ID = '457555921399-86s8lincsm63un3ctbj3oo2n8uete63t.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyCDEaAMRp2uCzRjtg_vr8hG2QdFeTLBKkw';
+var CLIENT_ID = "558637768385-5epml3uiedk1po08rede31o5vatlgtac.apps.googleusercontent.com";
+var API_KEY = "AIzaSyD-SHsqvtSLUDTfO4GiH9WypCr7i9wWSDU";
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-const SCOPES = "https://www.googleapis.com/auth/calendar";
+var SCOPES = "https://www.googleapis.com/auth/calendar";
 
 function handleClientLoad() {
     gapi.load('client:auth2', initClient);
@@ -19,34 +19,34 @@ function initClient() {
 
         // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        authorizeButton.onclick = handleAuthClick;
-        signoutButton.onclick = handleSignoutClick;
-    }, function(error) {
-          appendPre(JSON.stringify(error, null, 2));
+        // authorizeButton.onclick = handleAuthClick;
+        // signoutButton.onclick = handleSignoutClick;
     });
 }
 
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
-        authorizeButton.style.display = 'none';
-        signoutButton.style.display = 'block';
-        listUpcomingEvents();
+        console.log("successfully signed in with google account!")
+        // authorizeButton.style.display = 'none';
+        // signoutButton.style.display = 'block';
+        // listUpcomingEvents();
     } 
     else {
-        authorizeButton.style.display = 'block';
-        signoutButton.style.display = 'none';
+        console.log("error signing in with google account!")
+        // authorizeButton.style.display = 'block';
+        // signoutButton.style.display = 'none';
     }
 }
 
-// Sign in the user upon button click.
-function handleAuthClick(event) {
-    gapi.auth2.getAuthInstance().signIn();
-}
+// // Sign in the user upon button click.
+// function handleAuthClick(event) {
+//     gapi.auth2.getAuthInstance().signIn();
+// }
 
-// Sign out the user upon button click.
-function handleSignoutClick(event) {
-    gapi.auth2.getAuthInstance().signOut();
-}
+// // Sign out the user upon button click.
+// function handleSignoutClick(event) {
+//     gapi.auth2.getAuthInstance().signOut();
+// }
 
 
 document.onkeydown = function (e) {
@@ -82,7 +82,8 @@ function send_mail(){
 }
 
 function send_event(){
-
+    handleClientLoad();
+    gapi.auth2.getAuthInstance().signIn();
 }
 
 function after_submit(){
