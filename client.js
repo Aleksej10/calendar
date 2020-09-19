@@ -118,8 +118,8 @@ function create_event(){
 
     document.getElementById('submit-form').style.display = 'none';
 
-    request.execute(function(eventt) {
-      appendPre('Event added to your calendar', 'blue');
+    request.execute(() => {
+        log_msg('Event added to your calendar!', 'blue');
     });
 
 }
