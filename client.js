@@ -135,7 +135,8 @@ function get_datetime(){
     const tm = t[1].split(':');
     const d = new Date(dt[2], dt[1], dt[0], tm[0], tm[1], 0, 0);
     // return d.toISOString().split('.')[0]+'+00:00';
-    return d.toISOString().split('.')[0]+get_offset(d);
+    // return d.toISOString().split('.')[0]+get_offset(d);
+    return d.toISOString();
 }
 
 function after_submit(){
