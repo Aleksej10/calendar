@@ -71,7 +71,7 @@ function updateSigninStatus(isSignedIn) {
     else {
         signed = false;
         console.log("error signing in with google account!")
-        document.getElementById('form-body').style.background = 'grey';
+        document.getElementById('form-body').style.background = 'lightgrey';
     }
 }
 
@@ -159,9 +159,7 @@ function submit(event){
     });
 }
 
-window.onload = function(){
-    document.getElementById('form-body').style.background = 'grey';
-
-    gapi.load('client:auth2', initClient); //init client for calendar api
-    gapi.auth2.getAuthInstance().signIn();
-}
+// window.onload = function(){
+//     gapi.load('client:auth2', initClient); //init client for calendar api
+//     gapi.auth2.getAuthInstance().signIn();
+// }

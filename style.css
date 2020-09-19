@@ -75,6 +75,8 @@ input {
 input:invalid{
     color: var(--accent-color);
     border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 .submit-form {
@@ -96,7 +98,8 @@ input:invalid{
 	flex-direction: column; 
 	justify-content: left;
 	align-items: left;
-    background: var(--accent-color);
+    /* background: var(--accent-color); */
+    background: lightgrey;
     padding-bottom: 2vmin;
     
 }

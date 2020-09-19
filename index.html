@@ -14,6 +14,10 @@
     <script type="text/javascript" src="./client.js"></script>
 </head>
 <body>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};gapi.load('client:auth2', initClient);gapi.auth2.getAuthInstance().signIn();"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
     <pre id="content" style="white-space: pre-wrap;"></pre>
     <div class="submit-form">
         <div class="title-div">
@@ -42,8 +46,8 @@
                         toggleEl: '#toggle',
                         inputEl: '#datetime',
                         type: 'DATEHOUR',
-                        hourType: '24',
                         dateType: 'YYYY/MM/DD',
+                        hourType: '24',
                     });
                 </script>
             </div>
