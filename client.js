@@ -5,14 +5,18 @@ var SCOPES = "https://www.googleapis.com/auth/calendar";
 
 var signed = false;
 
-function handleClientLoad() {
-    gapi.load('client:auth2', initClient);
+function log_msg(msg, color){
+    var logd = document.getElementById('logger-div');
+    var logp = document.getElementById('logger-p');
+    logd.style.opacity = 0;
+    logp.style.color = color;
+    logp.innerText = msg;
+    logd.style.opacity = 1;
+    setTimeout(() => { logd.style.opacity = 0; }, 2000);
 }
 
-function appendPre(message) {
-    var pre = document.getElementById('content');
-    var textContent = document.createTextNode(message + '\n');
-    pre.appendChild(textContent);
+function handleClientLoad() {
+    gapi.load('client:auth2', initClient);
 }
 
 function initClient() {
@@ -25,14 +29,14 @@ function initClient() {
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
     }, function(error) {
-          appendPre(JSON.stringify(error, null, 2));
+          log_msg(JSON.stringify(error, null, 2), 'red');
     });
 }
 
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         signed = true;
-        console.log("successfully signed in with google account!")
+        log_msg('Signed in with google account', 'green');
         document.getElementById('welcome').style.display = 'none';
         document.getElementById('submit-form').style.display = 'flex';
     } 
@@ -71,11 +75,10 @@ function send_mail(){
     .then(function (message) { 
         if(message == 'OK'){
             document.getElementById('submit-button').innerText = 'submitted!';
-            alert('mail sent successfully, it is probably in your spam folder by now!');
+            log_msg('You\'ve got mail, check your spam folder!', 'green');
         }
         else{
-            console.log(message);
-            // alert('i do not deserve this job');
+            log_msg('Email service currently not available', 'grey');
         }
     }); 
 }
@@ -106,7 +109,6 @@ function create_event(){
             ]
         }
     };
-    console.log(eventt);
 
     var request = gapi.client.calendar.events.insert({
         'calendarId': 'primary',
@@ -116,7 +118,7 @@ function create_event(){
     document.getElementById('submit-form').style.display = 'none';
 
     request.execute(function(eventt) {
-      appendPre('Event created, check it out at ' + eventt.htmlLink);
+      appendPre('Event added to your calendar', 'blue');
     });
 
 }
@@ -148,20 +150,14 @@ function after_submit(){
 
 var validateCaptcha = function(response){
     if(response != null){
-        console.log('you\'re just a human after all');
         after_submit();
     }
     else{
-        console.log('you\'re a robot, admit it!');
+        log_msg('You\'re a robot, admit it!', 'red');
     }
 }
 
 function submit(){
-    if (signed == false){
-        console.log('you need to sign with your google account in order to schedule an event');
-        console.log('if you did not get prompted for sign in, please refresh the page');
-        return;
-    }
     const fields = [
         document.getElementById('name'),
         document.getElementById('phone'),
@@ -170,7 +166,7 @@ function submit(){
     ];
     for(var f of fields){
         if(!f.validity.valid){
-            console.log('please fill all fields');
+            log_msg('Please fill in all fields', 'red');
             f.focus();
             return;
         }

@@ -7,6 +7,7 @@
     --paragraph-font-size: calc(var(--height)/20);
     --input-size: calc(var(--height)/30);
     --paragraph-title-size: calc(var(--height)/15);
+    --logger-font-size: calc(var(--height)/35);
 }
 
 
@@ -48,7 +49,7 @@
 *{ 
     box-sizing: border-box; 
     transition-timing-function: ease-out;
-    transition: color 0.3s;
+    transition: color 0.3s, opacity: 0.3s;
 }
 
 p{ margin: var(--p-margin) 1vmin var(--p-margin) 0.5vmin; }
@@ -169,4 +170,27 @@ input:invalid{
     font-family: 'ProductSans', sans-serif;
     font-size: var(--input-size);
     color: black;
+}
+
+.logger-div {
+    background: white;
+    width: var(--width);
+    position: relative;
+    display: flex;
+	flex-direction: column; 
+	justify-content: center;
+	align-items: left;
+    margin: auto;
+    margin-top: 1vmin;
+    border-radius: 2vmin;
+    box-shadow: var(--box-shadow);
+    padding:  0 1vmin 0vmin 2vmin;
+    opacity: 0;
+}
+
+.logger-p{
+    font-family: 'ProductSans', sans-serif;
+    font-size: var(--logger-font-size); 
+    color: grey;
+    user-select: none;
 }
