@@ -12,6 +12,7 @@ function log_msg(msg, color){
     logp.style.color = color;
     logp.innerText = msg;
     logd.style.opacity = 1;
+    if(color == 'blue') return;
     setTimeout(() => { logd.style.opacity = 0; }, 2000);
 }
 
