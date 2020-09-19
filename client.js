@@ -26,7 +26,7 @@ function initClient() {
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
         // Handle the initial sign-in state.
-        // updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
         // authorizeButton.onclick = handleAuthClick;
         // signoutButton.onclick = handleSignoutClick;
     }, function(error) {
@@ -65,14 +65,18 @@ function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         signed = true;
         console.log("successfully signed in with google account!")
-        document.getElementById('form-body').style.background = 'var(--accent-color)';
-        // listUpcomingEvents();
+        document.getElementById('welcome').style.display = 'none';
+        document.getElementById('submit-form').style.display = 'flex';
     } 
     else {
         signed = false;
-        console.log("error signing in with google account!")
-        document.getElementById('form-body').style.background = 'lightgrey';
+        document.getElementById('submit-form').style.display = 'none';
+        document.getElementById('welcome').style.display = 'flex';
     }
+}
+
+function gglogin(){
+    gapi.auth2.getAuthInstance().signIn();
 }
 
 document.onkeydown = function (e) {
@@ -129,11 +133,11 @@ var validateCaptcha = function(response){
 }
 
 function submit(event){
-    // if (signed == false){
-    //     console.log('you need to sign with your google account in order to schedule an event');
-    //     console.log('if you did not get prompted for sign in, please refresh the page');
-    //     return;
-    // }
+    if (signed == false){
+        console.log('you need to sign with your google account in order to schedule an event');
+        console.log('if you did not get prompted for sign in, please refresh the page');
+        return;
+    }
     const fields = [
         document.getElementById('name'),
         document.getElementById('phone'),

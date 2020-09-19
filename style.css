@@ -83,7 +83,8 @@ input:invalid{
     background: white;
     width: var(--width);
     position: relative;
-	display: flex;
+	/* display: flex; */
+    display: none;
 	flex-direction: column; 
 	justify-content: center;
 	align-items: left;
@@ -111,8 +112,7 @@ input:invalid{
 	flex-direction: column; 
 	justify-content: left;
 	align-items: left;
-    /* background: var(--accent-color); */
-    background: lightgrey;
+    background: var(--accent-color);
     padding-bottom: 2vmin;
     
 }
@@ -140,6 +140,10 @@ input:invalid{
 }
 
 .form-title:hover{ color: grey; }
+
+.welcome-text{
+    font-size: var(--paragraph-fontj-size);
+}
 
 .submit-div{
     margin-bottom: 1vmin;
