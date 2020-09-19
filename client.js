@@ -161,5 +161,5 @@ function submit(event){
 
 window.onload = function(){
     gapi.load('client:auth2', initClient);
-    gapi.auth2.getAuthInstance().signIn();
+    // gapi.auth2.getAuthInstance().signIn();
 }
