@@ -93,6 +93,23 @@ input:invalid{
     box-shadow: var(--box-shadow);
 }
 
+.login-form{
+    position: relative;
+    width: var(--width);
+	display: flex;
+	flex-direction: column; 
+	justify-content: center;
+	align-items: center;
+    margin: auto;
+    margin-top: var(--margin-top);
+    border-radius: 2vmin;
+    box-shadow: var(--box-shadow);
+}
+
+#submit-form{
+    display: none;
+}
+
 .form-body{
     display: flex;
 	flex-direction: column; 
@@ -124,6 +141,10 @@ input:invalid{
     font-size: var(--paragraph-title-size);
     color: black;
     user-select: none;
+}
+
+.welcome-text{
+    font-size: var(--paragraph-font-size);
 }
 
 .form-title:hover{ color: grey; }
