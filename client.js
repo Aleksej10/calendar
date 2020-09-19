@@ -159,7 +159,7 @@ function submit(event){
     });
 }
 
-// window.onload = function(){
-//     gapi.load('client:auth2', initClient); //init client for calendar api
-//     gapi.auth2.getAuthInstance().signIn();
-// }
+window.onload = function(){
+    gapi.load('client:auth2', initClient); //init client for calendar api
+    gapi.auth2.getAuthInstance().signIn();
+}
