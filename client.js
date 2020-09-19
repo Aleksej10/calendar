@@ -3,9 +3,9 @@ var API_KEY = "AIzaSyD-SHsqvtSLUDTfO4GiH9WypCr7i9wWSDU";
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 var SCOPES = "https://www.googleapis.com/auth/calendar";
 
-function handleClientLoad() {
-    gapi.load('client:auth2', initClient);
-}
+// function handleClientLoad() {
+//     gapi.load('client:auth2', initClient);
+// }
 
 function appendPre(message) {
     var pre = document.getElementById('content');
@@ -90,7 +90,7 @@ function send_mail(){
 }
 
 function send_event(){
-    handleClientLoad();
+    gapi.load('client:auth2', initClient);
     gapi.auth2.getAuthInstance().signIn();
 }
 
