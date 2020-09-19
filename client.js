@@ -65,8 +65,6 @@ function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         signed = true;
         console.log("successfully signed in with google account!")
-        document.getElementById('gglogin').style.display = 'none';
-        document.getElementById('submit-form').style.display = 'block';
         document.getElementById('form-body').style.background = 'var(--accent-color)';
         // listUpcomingEvents();
     } 
@@ -161,7 +159,7 @@ function submit(event){
     });
 }
 
-function gglogin(){
+window.onload = function(){
     gapi.load('client:auth2', initClient);
     gapi.auth2.getAuthInstance().signIn();
 }
