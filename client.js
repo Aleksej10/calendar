@@ -24,11 +24,8 @@ function initClient() {
     }).then(function () {
         // Listen for sign-in state changes.
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
         // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        // authorizeButton.onclick = handleAuthClick;
-        // signoutButton.onclick = handleSignoutClick;
     }, function(error) {
           appendPre(JSON.stringify(error, null, 2));
     });
@@ -112,6 +109,41 @@ function send_mail(){
 }
 
 function create_event(){
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const datetime = get_datetime();
+
+    var eventt = {
+        'summary': name + '\'s event',
+        'description': 'phone: ' + phone + ' email: ' + email,
+        'start': {
+            'dateTime': datetime,
+        },
+        'end': {
+            'dateTime': datetime,
+        },
+        'attendees': [
+            {'email': email},
+        ],
+        'reminders': {
+            'useDefault': false,
+            'overrides': [
+                {'method': 'email', 'minutes': 15},
+                {'method': 'email', 'minutes': 30},
+            ]
+        }
+    };
+    console.log(eventt);
+
+    var request = gapi.client.calendar.events.insert({
+        'calendarId': 'primary',
+        'resource': eventt,
+    });
+
+    request.execute(function(eventt) {
+      appendPre('Event created: ' + eventt.htmlLink);
+    });
 }
 
 function get_datetime(){
@@ -157,10 +189,6 @@ function submit(event){
             return;
         }
     }
-    // const name = fields[0].value;
-    // const phone = fields[1].value;
-    // const email = fields[2].value;
-    // const datetime = fields[3].value;
 
     document.getElementById('submit-button').innerText = '';
     grecaptcha.render('captcha', {
