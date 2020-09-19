@@ -103,7 +103,7 @@ function send_mail(){
             alert('mail sent successfully, it is probably in your spam folder by now!');
         }
         else{
-            alert('i do not deserve this job');
+            // alert('i do not deserve this job');
         }
     }); 
 }
@@ -146,11 +146,19 @@ function create_event(){
     });
 }
 
+function get_offset(date){
+    const offset = date.getTimezoneOffset();
+    const sign = offset < 0 ? '-' : '+';
+    var hours = '00' + Math.abs(offset / 60);
+    var minutes = '00' + Math.abs(offset % 60);
+    return sign + hours.substr(hours.length-2) + ':' + minutes.substr(minutes.length-2);
+}
+
 function get_datetime(){
     const t = document.getElementById('datetime').value.split(' ');
     const dt = t[0].split('/');
     const d = new Date(dt[2], dt[1], dt[0], t[1][0], t[1][1], 0, 0);
-    return d.toISOString();
+    return d.toISOString().split('.')[0]+get_offset(d);
 }
 
 function after_submit(){
@@ -198,15 +206,3 @@ function submit(event){
     });
 }
 
-function ISODateString(d){
-    function pad(n){
-        return n<10 ? '0'+n : n;
-    }
-    return d.getUTCFullYear()+'-'
-        + pad(d.getUTCMonth()+1)+'-'
-        + pad(d.getUTCDate())+'T'
-        + pad(d.getUTCHours())+':'
-        + pad(d.getUTCMinutes())+':'
-        + pad(d.getUTCSeconds());
-        // + pad(d.getUTCSeconds())+'Z'
-}

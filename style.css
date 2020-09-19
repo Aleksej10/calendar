@@ -165,3 +165,8 @@ input:invalid{
     padding:  0 1vmin 0vmin 2vmin;
 }
 
+#content{
+    font-family: 'ProductSans', sans-serif;
+    font-size: var(--paragraph-font-size);
+    color: black;
+}
