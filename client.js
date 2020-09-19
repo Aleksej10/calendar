@@ -90,7 +90,6 @@ function send_mail(){
 }
 
 function send_event(){
-    gapi.load('client:auth2', initClient);
     gapi.auth2.getAuthInstance().signIn();
 }
 
@@ -129,6 +128,7 @@ function submit(event){
     const email = fields[2].value;
     const datetime = fields[3].value;
 
+    gapi.load('client:auth2', initClient); //init client for calendar api
     document.getElementById('submit-button').innerText = '';
     grecaptcha.render('captcha', {
         'sitekey' : '6LfmxM0ZAAAAABH__t4Nkn-U4Cr-VKxJZzPVis17',
