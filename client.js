@@ -108,6 +108,7 @@ function send_mail(){
 }
 
 function send_event(){
+    gapi.auth2.getAuthInstance().signIn();
 }
 
 function after_submit(){
@@ -128,11 +129,11 @@ var validateCaptcha = function(response){
 }
 
 function submit(event){
-    if (signed == false){
-        console.log('you need to sign with your google account in order to schedule an event');
-        console.log('if you did not get prompted for sign in, please refresh the page');
-        return;
-    }
+    // if (signed == false){
+    //     console.log('you need to sign with your google account in order to schedule an event');
+    //     console.log('if you did not get prompted for sign in, please refresh the page');
+    //     return;
+    // }
     const fields = [
         document.getElementById('name'),
         document.getElementById('phone'),
@@ -161,5 +162,4 @@ function submit(event){
 
 window.onload = function(){
     gapi.load('client:auth2', initClient);
-    // gapi.auth2.getAuthInstance().signIn();
 }
